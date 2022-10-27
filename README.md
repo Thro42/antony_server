@@ -11,11 +11,11 @@ http://localhost:5000/move?dir=right
 http://localhost:5000/motors?m1=-1500&m2=-1500&m3=1000&m4=1000
 
 Linux
+''
     $ export FLASK_APP=app.py
     $ export FLASK_ENV=development
-    $ flask run
+    $ flask run''
 Windows
-    C:\> set FLASK_APP=app.py
+''    C:\> set FLASK_APP=app.py
     C:\> set FLASK_ENV=development
-    C:\> flask run
-    
+    C:\> flask run''
