@@ -1,31 +1,19 @@
 # app.py
+import  sys
+import threading
 from flask import Flask, request, jsonify
+from Antony import *
+from Server import *
+from flask_restful import Api, Resource, reqparse, fields, marshal
 
 app = Flask(__name__)
+api = Api(app)
+antony = Antony
 
-@app.get("/move_forward")
-def move_forward():
-    moving = "movin Forward"
-    return moving, 201
+api.add_resource(getStatus, '/', )
+api.add_resource(setColor, '/color/<red_id>/<green_id>/<blue_id>', )
+api.add_resource(setMotor, '/motor/<mot1>/<mot2>/<mot3>/<mot4>', )
+api.add_resource(setDirection, '/direction/<direction>', )
 
-@app.route("/motors", methods=['GET'])
-def motors():
-    m1 = request.args.get('m1')
-    m2 = request.args.get('m2')
-    m3 = request.args.get('m3')
-    m4 = request.args.get('m4')
-    print( "self.PWM.setMotorModel(" + m1 + "," +m2+","+m3+","+m4+")")
-    return "OK", 201
-
-@app.route("/move", methods=['GET'])
-def move():
-    dir = request.args.get('dir')
-    moving = "movin " + dir
-    if dir == "left":
-        moving = "Also nach links"
-        print("self.PWM.setMotorModel(-1500,-1500,1500,1500)")
-    if dir == "right":
-        moving = "Liber nach rechts"
-        print("self.PWM.setMotorModel(1500,1500,-1500,-1500)")
-    return moving, 201
-
+if __name__ == '__main__':
+    app.run()
