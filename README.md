@@ -22,3 +22,4 @@ Windows
     C:\> set FLASK_ENV=development
     C:\> flask run
 ```
+sudo sh start.sh

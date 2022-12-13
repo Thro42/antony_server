@@ -119,7 +119,7 @@ class Led:
             else:
                 self.colorWipe(self.strip, Color(0,0,0),10)
                 break
-led=Led()                 
+led=Led()
 # Main program logic follows:
 if __name__ == '__main__':
     print ('Program is starting ... ')

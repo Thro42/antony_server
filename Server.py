@@ -17,19 +17,38 @@ class getStatus(Resource):
 class setColor(Resource):
     def get(self,red_id,green_id,blue_id):
         return my_Server.antony.setLEDcolor(red_id, green_id, blue_id)
+
 class setMotor(Resource):
     def get(self,mot1,mot2,mot3,mot4):
         return my_Server.antony.setMotor(mot1,mot2,mot3,mot4)
+
 class setDirection(Resource):
     def get(self,direction):
-        match direction:
-            case "left":
-                return my_Server.antony.setMotor(-1500,-1500,1500,1500)
-            case "right":
-                return my_Server.antony.setMotor(1500,1500,-1500,-1500)
-            case "forward":
-                return my_Server.antony.setMotor(1500,1500,1500,1500)
-            case "backward":
-                return my_Server.antony.setMotor(-1500,-1500,-1500,-1500)
-            case "stop":
-                return my_Server.antony.setMotor(0,0,0,0)
+        if direction == "right":
+            return my_Server.antony.setMotor(-1500,-1500,1500,1500)
+        elif direction == "left":
+            return my_Server.antony.setMotor(1500,1500,-1500,-1500)
+        elif direction == "backward":
+            return my_Server.antony.setMotor(1500,1500,1500,1500)
+        elif direction == "forward":
+            return my_Server.antony.setMotor(-1500,-1500,-1500,-1500)
+        elif direction == "stop":
+            return my_Server.antony.setMotor(0,0,0,0)
+        else:
+            return my_Server.antony.buidResponse()
+    
+class setLedMode(Resource):
+    def get(self,mode):
+        return my_Server.antony.setLEDmode(mode)
+
+class setSonic(Resource):
+    def get(self,state):
+        return my_Server.antony.setSonic(state)
+class setServo(Resource):
+    def get(self,channel, angle):
+        return my_Server.antony. setServo(channel, angle)
+class setLight(Resource):
+    def get(self,state):
+        return my_Server.antony. setLight(state)
+
+       
